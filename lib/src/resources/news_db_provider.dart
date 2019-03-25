@@ -10,11 +10,11 @@ import 'repository.dart';
 class NewsDbProvider implements Source, Cache {
   Database db;
 
-  NewsDbProvider(){
+  NewsDbProvider() {
     init();
   }
 
-  Future<List<int>> fetchTopIds(){
+  Future<List<int>> fetchTopIds() {
     return null;
   }
 
@@ -51,16 +51,20 @@ class NewsDbProvider implements Source, Cache {
       whereArgs: [id],
     );
 
-    if(maps.length > 0){
+    if (maps.length > 0) {
       return ItemModel.fromDb(maps.first);
     }
 
     return null;
   }
 
+  Future<int> addItem(ItemModel item) {
+    return db.insert("items", item.toMapForDb(),
+        conflictAlgorithm: ConflictAlgorithm.ignore);
+  }
 
-  Future<int> addItem(ItemModel item){
-    return db.insert("items", item.toMapForDb());
+  Future<int> clear(){
+    db.delete("items");
   }
 }
 
