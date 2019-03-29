@@ -7,7 +7,7 @@ import '../widgets/refresh.dart';
 class NewsList extends StatelessWidget {
   Widget build(context) {
     final bloc = StoriesProvider.of(context);
-    //this us bad, only temporary
+    //THIS IS BAD, ONLY TEMPORARY
     bloc.fetchTopIds();
 
     return Scaffold(
