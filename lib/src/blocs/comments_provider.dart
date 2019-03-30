@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'comments_bloc.dart';
-export 'comments_provider.dart';
+export 'comments_bloc.dart';
 
 class CommentsProvider extends InheritedWidget {
   final CommentsBloc bloc;
